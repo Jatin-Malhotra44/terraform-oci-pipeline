@@ -23,12 +23,12 @@ jobs:
           echo "region=${{secrets.OCI_REGION}}" >> ~/.oci/config
           echo "tenancy=${{secrets.OCI_TENANCY_OCID}}" >> ~/.oci/config
           echo "key_file=~/.oci/key.pem" >> ~/.oci/config
-          echo "${{secrets.OCI_KEY_FILE}}" >> ~/.oci/key.pem
+          echo "${{secrets.OCI_KEY_FILE}}" >> ~/.oci/oci_api_key.pem
 
       - name: 'Fix OCI Config File Permissions'
         run: |
           oci setup repair-file-permissions --file /home/runner/.oci/config
-          oci setup repair-file-permissions --file /home/runner/.oci/key.pem
+          oci setup repair-file-permissions --file /home/runner/.oci/oci_api_key.pem
 
 
       - name: Setup Terraform
