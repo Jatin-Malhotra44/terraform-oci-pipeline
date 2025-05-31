@@ -1,6 +1,1 @@
-tenancy_ocid     = "ocid1.tenancy.oc1..aaaaaaaawfssm6kwqr5452uyvokkboixuyl7cgrb5zqp4qzor4iddflkgpja"
-user_ocid        = "ocid1.user.oc1..aaaaaaaacayyod3zk7eg3st25qxpr4d5uvifxggkk5x54nqdl3plmfbxyina"
-fingerprint      = "a7:8b:09:11:55:56:9c:4d:8a:99:2d:d8:6a:f6:79:3f"
-private_key_path = "C:/Users/JATIN/Downloads/jati.pem"
-region           = "ap-sydney-1"
 compartment_ocid = "ocid1.compartment.oc1..aaaaaaaaf6wh2c7zfuqfvbvdvtjivr3hwik3dsxdp3zlccf7hfsu4l2s6ssq"
