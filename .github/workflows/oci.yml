@@ -1,0 +1,44 @@
+name: OCI Terraform CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    name: Deploy to OCI
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.12.1
+
+      - name: Create private key file
+        run: |
+          echo "${{ secrets.OCI_PRIVATE_KEY }}" > oci_api_key.pem
+          chmod 600 oci_api_key.pem
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan -var "tenancy_ocid=${{ secrets.OCI_TENANCY_OCID }}" \
+                             -var "user_ocid=${{ secrets.OCI_USER_OCID }}" \
+                             -var "fingerprint=${{ secrets.OCI_FINGERPRINT }}" \
+                             -var "private_key_path=oci_api_key.pem" \
+                             -var "region=${{ secrets.OCI_REGION }}" \
+                             -var "compartment_ocid=${{ secrets.OCI_COMPARTMENT_OCID }}"
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -var "tenancy_ocid=${{ secrets.OCI_TENANCY_OCID }}" \
+                                          -var "user_ocid=${{ secrets.OCI_USER_OCID }}" \
+                                          -var "fingerprint=${{ secrets.OCI_FINGERPRINT }}" \
+                                          -var "private_key_path=oci_api_key.pem" \
+                                          -var "region=${{ secrets.OCI_REGION }}" \
+                                          -var "compartment_ocid=${{ secrets.OCI_COMPARTMENT_OCID }}"
