@@ -39,17 +39,4 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan -var "tenancy_ocid=${{ secrets.OCI_TENANCY_OCID }}" \
-                             -var "user_ocid=${{ secrets.OCI_USER_OCID }}" \
-                             -var "fingerprint=${{ secrets.OCI_FINGERPRINT }}" \
-                             -var "private_key_path=oci_api_key.pem" \
-                             -var "region=${{ secrets.OCI_REGION }}" \
-                             -var "compartment_ocid=${{ secrets.OCI_COMPARTMENT_OCID }}"
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve -var "tenancy_ocid=${{ secrets.OCI_TENANCY_OCID }}" \
-                                          -var "user_ocid=${{ secrets.OCI_USER_OCID }}" \
-                                          -var "fingerprint=${{ secrets.OCI_FINGERPRINT }}" \
-                                          -var "private_key_path=oci_api_key.pem" \
-                                          -var "region=${{ secrets.OCI_REGION }}" \
-                                          -var "compartment_ocid=${{ secrets.OCI_COMPARTMENT_OCID }}"
+        run: terraform plan
