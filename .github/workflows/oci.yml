@@ -22,8 +22,8 @@ jobs:
           echo "fingerprint=${{secrets.OCI_FINGERPRINT}}" >> ~/.oci/config
           echo "region=${{secrets.OCI_REGION}}" >> ~/.oci/config
           echo "tenancy=${{secrets.OCI_TENANCY_OCID}}" >> ~/.oci/config
-          echo "key_file=~/.oci/key.pem" >> ~/.oci/config
           echo "${{secrets.OCI_KEY_FILE}}" >> ~/.oci/oci_api_key.pem
+          chmod 600 oci_api_key.pem
 
 
 
@@ -32,10 +32,6 @@ jobs:
         with:
           terraform_version: 1.10.1
 
-      - name: Create private key file
-        run: |
-          echo "${{ secrets.OCI_PRIVATE_KEY }}" > oci_api_key.pem
-          chmod 600 oci_api_key.pem
 
       - name: Terraform Init
         run: terraform init
