@@ -1,1 +1,1 @@
-compartment_ocid = "ocid1.compartment.oc1..aaaaaaaaf6wh2c7zfuqfvbvdvtjivr3hwik3dsxdp3zlccf7hfsu4l2s6ssqter"
+compartment_ocid = "ocid1.compartment.oc1..aaaaaaaaf6wh2c7zfuqfvbvdvtjivr3hwik3dsxdp3zlccf7hfsu4l2s6ssq"
