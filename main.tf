@@ -5,5 +5,5 @@ provider "oci" {
 resource "oci_core_vcn" "example_vcn2" {
   cidr_block     = "10.2.0.0/16"
   compartment_id = var.compartment_ocid
-  display_name   = "example-vcn"
+  display_name   = "example-vcn2"
 }
